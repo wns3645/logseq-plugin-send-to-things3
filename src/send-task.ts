@@ -1,26 +1,12 @@
-import { BlockEntity, BlockIdentity } from "@logseq/libs/dist/LSPlugin.user";
+import { BlockIdentity } from "@logseq/libs/dist/LSPlugin.user";
 
 export const send = async (uuid: BlockIdentity): Promise<void> => {
   try {
-    const blk = await logseq.Editor.getBlock(uuid, { includeChildren: true });
+    const blk = await logseq.Editor.getBlock(uuid);
     const currGraph = await logseq.App.getCurrentGraph();
     if (!blk || !currGraph) throw new Error();
 
-    let content: string = "";
-    if (blk.children!.length > 0) {
-      const findAllChildBlocks = (blocks: BlockEntity[]) => {
-        for (const b of blocks) {
-          content += "- " + b.content + "\n";
-          if (b.children!.length > 0) {
-            findAllChildBlocks(b.children as BlockEntity[]);
-          }
-        }
-      };
-      findAllChildBlocks(blk.children as BlockEntity[]);
-    }
-
-    content += "\n";
-    content += `Source: logseq://graph/${currGraph.name}`;
+    const content = `Source: logseq://graph/${currGraph.name}`;
 
     window.open(
       `things:///add?title=${encodeURIComponent(
