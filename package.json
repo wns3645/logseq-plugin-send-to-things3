@@ -4,8 +4,8 @@
   "description": "Quickly send block to Things3",
   "license": "MIT",
   "logseq": {
-    "id": "logseq-sendtothings3-plugin",
-    "title": "logseq-sendtothings3-plugin",
+    "id": "logseq-plugin-send-to-things3",
+    "title": "Send to thigns3",
     "icon": "./icon.svg",
     "main": "dist/index.html"
   },
@@ -19,21 +19,6 @@
     "dev": "npx vite",
     "build": "npx tsc && npx vite build",
     "preview": "npx vite preview"
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      [
-        "@semantic-release/github",
-        {
-          "assets": [
-            "logseq-sendtothings3-plugin.zip"
-          ]
-        }
-      ]
-    ]
   },
   "dependencies": {
     "@logseq/libs": "^0.0.15"
