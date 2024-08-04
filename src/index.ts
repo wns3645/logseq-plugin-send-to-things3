@@ -2,8 +2,6 @@ import "@logseq/libs";
 import { send } from "./send-task";
 
 async function main() {
-  console.log("logseq-sendtothings3-plugin loaded");
-
   await logseq.Editor.registerBlockContextMenuItem(
     "Send to Things3",
     async (block) => {
